@@ -1,10 +1,14 @@
-defmodule YourApplication.Main do
-  alias YourApplication.Host
-  alias YourApplication.Participant
+defmodule SpatialCompetition.Main do
+  alias SpatialCompetition.Host
+  alias SpatialCompetition.Participant
 
   def init do
     %{
+      game_page: "waiting",
+      town_profit: [20, 40, 20, 20],
       participants: %{},
+      pairs: %{},
+      results: %{},
       participants_number: 0,
     }
   end

@@ -1,4 +1,4 @@
-defmodule YourApplication.Participant do
+defmodule SpatialCompetition.Participant do
   def get_filter(data, id) do
     %{
       participants: %{

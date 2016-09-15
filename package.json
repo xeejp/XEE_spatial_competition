@@ -1,5 +1,5 @@
 {
-  "name": "xee-boilerplate",
+  "name": "spatial-competition",
   "version": "1.0.0",
   "dependencies": {
     "babel-polyfill": "^6.8.0",
@@ -31,12 +31,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xeejp/experiment-boilerplate.git"
+    "url": "git+https://github.com/xeejp/spatial-competition.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xeejp/experiment-boilerplate/issues"
+    "url": "https://github.com/xeejp/spatial-competition/issues"
   },
-  "homepage": "https://github.com/xeejp/experiment-boilerplate#readme",
+  "homepage": "https://github.com/xeejp/spatial-competition#readme",
   "description": ""
 }

@@ -1,4 +1,4 @@
-defmodule YourApplication.Host do
+defmodule SpatialCompetition.Host do
   def get_filter(data) do
     %{
       _default: true,
