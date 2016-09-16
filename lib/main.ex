@@ -2,10 +2,14 @@ defmodule SpatialCompetition.Main do
   alias SpatialCompetition.Host
   alias SpatialCompetition.Participant
 
+  @pages ["waiting", "description", "experiment", "result"]
+  def pages, do: @pages
+
   def init do
     %{
       game_page: "waiting",
-      town_profit: [20, 40, 20, 20],
+      game_progress: 0,
+      town_demand: %{"1" => 20,"2" =>  40,"3" =>  20,"4" =>  20},
       participants: %{},
       pairs: %{},
       results: %{},
@@ -15,7 +19,19 @@ defmodule SpatialCompetition.Main do
 
   def new_participant do
     %{
-      id: nil
+      id: nil,
+      point: 0,
+      pair_id: nil,
+      role: nil,
+    }
+  end
+
+  def new_pair(members) do
+    %{
+      members: members,
+      pair_turn: 1,
+      selected_town: nil,
+      pair_state: "during",
     }
   end
 

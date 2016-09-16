@@ -11,6 +11,7 @@ import clone from 'clone'
 import { fork, take, call } from 'redux-saga/effects'
 
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
@@ -66,8 +67,10 @@ export default function startApp(component, reducer, saga, host=false) {
 
   render(
     <Provider store={store}>
-      {React.createElement(component)}
-    </Provider>,
-    document.getElementById("content")
+      <MuiThemeProvider>
+        {React.createElement(component)}
+      </MuiThemeProvider>
+    </Provider>
+    ,document.getElementById("content")
   )
 }

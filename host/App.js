@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { fetchContents } from 'shared/actions'
+import { fetchContents } from './actions.js'
 
-const actionCreators = {
-  fetchContents
-}
+import PageSteps from './PageSteps.js'
+import Users from './Users.js'
+import Chart from 'shared/Chart.js'
+import DemandEditor from './DemandEditor.js'
+
+import throttle from 'react-throttle-render'
+
+const ThrottledChart = throttle(Chart, 200)
+
+const mapStateToProps = ({ dispatch }) => ({
+  dispatch,
+})
 
 class App extends Component {
   constructor(props, context) {
@@ -14,15 +23,20 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchContents();
+    const { dispatch } = this.props
+    dispatch(fetchContents())
   }
 
   render() {
     return (
       <div>
+        <PageSteps />
+        <Users />
+        <ThrottledChart />
+        <DemandEditor />
       </div>
     )
   }
 }
 
-export default connect(null, actionCreators)(App)
+export default connect(mapStateToProps)(App)
