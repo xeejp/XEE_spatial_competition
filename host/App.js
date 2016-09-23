@@ -7,6 +7,7 @@ import PageSteps from './PageSteps.js'
 import Users from './Users.js'
 import Chart from 'shared/Chart.js'
 import DemandEditor from './DemandEditor.js'
+import MatchingButton from './MatchingButton.js'
 
 import throttle from 'react-throttle-render'
 
@@ -34,6 +35,7 @@ class App extends Component {
         <Users />
         <ThrottledChart />
         <DemandEditor />
+        <MatchingButton />
       </div>
     )
   }

@@ -11,8 +11,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider'
-import ResetButton from './ResetButton.js'
-import MatchingButton from './MatchingButton.js'
 
 import { getPageName, game_pages } from 'util/index'
 
@@ -74,7 +72,7 @@ class PageSteps extends React.Component {
     let prev = game_pages[0]
     for(let i = 1; i < game_pages.length; i++){
       if(game_page == game_pages[i]) {
-        prev = game_pages[(i - 1) % game_pages.length]
+        prev = game_pages[(i + game_pages.length - 1) % game_pages.length]
         break
       }
     }
@@ -83,29 +81,6 @@ class PageSteps extends React.Component {
       this.Async(() => {
         dispatch(exitLoading())
       })
-    }
-  }
-
-  getStepContent(game_page) {
-    const {game_round, pairs, game_progress } = this.props
-    switch (game_page) {
-      case 0:
-        return (
-          <div>
-            <p>参加者側に待機画面を表示しています。</p>
-          </div>
-        );
-      case 1:
-        return <p>参加者側に説明を表示しています。</p>
-      case 2:
-        return (
-          <div>
-            <p>参加者側に実験画面を表示しています。</p>
-            <p>現在の進捗: {game_progress} %</p>
-          </div>
-        )
-      case 3:
-        return <p>参加者側に結果を表示しています。</p>
     }
   }
 
@@ -125,16 +100,6 @@ class PageSteps extends React.Component {
           primary={true}
           onTouchTap={this.handleNext}
         />
-        <span style={{float: "right"}}>
-          {game_pages[3] === game_page ?
-            <ResetButton />
-          : <span />
-          }
-          {game_pages[1] === game_page ?
-            <MatchingButton />
-          : <span />
-          }
-        </span>
       </div>
     );
   }

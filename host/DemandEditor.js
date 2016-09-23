@@ -9,8 +9,8 @@ import TextField from 'material-ui/TextField'
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import { changeTownDemand } from './actions.js'
 
-const mapStateToProps = ({ town_demand }) => ({
-  town_demand
+const mapStateToProps = ({ town_demand, game_page }) => ({
+  town_demand, game_page
 })
 
 class ConfigEditor extends Component {
@@ -30,9 +30,9 @@ class ConfigEditor extends Component {
 
   componentDidMount() {
     const { town_demand } = this.props
-    this.state = {
-      town_demand_temp: town_demand,
-    }
+    this.setState({
+      town_demand_temp: (town_demand != undefined)? town_demand : this.state.town_demand_temp,
+    })
   }
 
   handleOpen = () => {
@@ -64,7 +64,7 @@ class ConfigEditor extends Component {
     const value = event.target.value;
     this.setState({
       town_demand_temp: Object.assign({}, this.state.town_demand_temp, {
-        ["1"]: value.length > 0 ? parseInt(value) : 0,
+        "1": value.length > 0 ? parseInt(value) : 0,
       })
     })
   }
@@ -73,7 +73,7 @@ class ConfigEditor extends Component {
     const value = event.target.value;
     this.setState({
       town_demand_temp: Object.assign({}, this.state.town_demand_temp, {
-        ["2"]: value.length > 0 ? parseInt(value) : 0,
+        "2": value.length > 0 ? parseInt(value) : 0,
       })
     })
   }
@@ -82,7 +82,7 @@ class ConfigEditor extends Component {
     const value = event.target.value;
     this.setState({
       town_demand_temp: Object.assign({}, this.state.town_demand_temp, {
-        ["3"]: value.length > 0 ? parseInt(value) : 0,
+        "3": value.length > 0 ? parseInt(value) : 0,
       })
     })
   }
@@ -91,7 +91,7 @@ class ConfigEditor extends Component {
     const value = event.target.value;
     this.setState({
       town_demand_temp: Object.assign({}, this.state.town_demand_temp, {
-        ["4"]: value.length > 0 ? parseInt(value) : 0,
+        "4": value.length > 0 ? parseInt(value) : 0,
       })
     })
   }
@@ -119,7 +119,7 @@ class ConfigEditor extends Component {
         <FloatingActionButton 
           onClick={this.handleOpen}
           disabled={game_page == "experiment"}
-          style={{marginLeft: '5%'}} 
+          style={{marginRight: '2%'}} 
         >
           <ActionSettings />
         </FloatingActionButton>
