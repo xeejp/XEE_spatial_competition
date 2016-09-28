@@ -18,7 +18,6 @@ class MatchingButton extends Component {
   render() {
     return (
       <FloatingActionButton
-        style={{marginRight: "12px"}}
         onClick={this.handleClick.bind(this)}
       ><ActionCached /></FloatingActionButton>
     )
